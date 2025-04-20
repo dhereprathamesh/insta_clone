@@ -17,6 +17,8 @@ export default function LoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev);
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -63,6 +65,9 @@ export default function LoginPage() {
           placeholder="Enter your password"
           register={register}
           errors={errors}
+          showPasswordToggle={true}
+          isPasswordVisible={isPasswordVisible}
+          togglePasswordVisibility={togglePasswordVisibility}
         />
 
         <button

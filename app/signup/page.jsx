@@ -19,6 +19,8 @@ export default function SignupPage() {
   const [error, setError] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev);
 
   // Handle image change and preview
   const handleImageChange = (e) => {
@@ -157,6 +159,9 @@ export default function SignupPage() {
           placeholder="Enter your password"
           register={register}
           errors={errors}
+          showPasswordToggle={true}
+          isPasswordVisible={isPasswordVisible}
+          togglePasswordVisibility={togglePasswordVisibility}
         />
 
         <button

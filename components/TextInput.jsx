@@ -1,3 +1,5 @@
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 const TextInput = ({
   label,
   name,
@@ -5,26 +7,38 @@ const TextInput = ({
   placeholder,
   register,
   errors,
-  ...props
+  showPasswordToggle = false,
+  isPasswordVisible,
+  togglePasswordVisibility,
 }) => {
   return (
-    <div className="mb-4">
-      {label && (
-        <label htmlFor={name} className="block font-medium">
-          {label}
-        </label>
-      )}
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="w-full p-2 border rounded"
-        {...register(name, { required: `${label} is required` })}
-        {...props}
-      />
+    <div className="flex flex-col">
+      <label className="text-white font-medium mb-1">{label}</label>
+      <div className="relative">
+        <input
+          {...register(name, { required: `${label} is required` })}
+          name={name}
+          type={
+            showPasswordToggle
+              ? isPasswordVisible
+                ? "text"
+                : "password"
+              : type
+          }
+          placeholder={placeholder}
+          className="w-full px-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none"
+        />
+        {showPasswordToggle && (
+          <span
+            onClick={togglePasswordVisibility}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white cursor-pointer"
+          >
+            {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        )}
+      </div>
       {errors[name] && (
-        <span className="text-red-500">{errors[name].message}</span>
+        <p className="text-red-500 text-sm mt-1">{errors[name].message}</p>
       )}
     </div>
   );

@@ -3,7 +3,6 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 export default function ProfilePostCard({ post, index, onDelete }) {
   return (
     <div className="relative">
-      {console.log("post?.[index]?.imageUrl", post)}
       <img
         src={post?.imageUrl?.[0]}
         alt={`Post ${index}`}

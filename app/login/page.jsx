@@ -19,15 +19,12 @@ export default function LoginPage() {
   const [error, setError] = useState("");
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
     setLoading(true);
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/user/signin`,
         data
       );
-      console.log(res.data);
 
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
@@ -36,7 +33,6 @@ export default function LoginPage() {
         router.push("/home");
       }
     } catch (err) {
-      console.log(err);
       toast.error("Error, Something Went Wrong");
     } finally {
       setLoading(false);

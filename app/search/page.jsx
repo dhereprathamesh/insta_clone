@@ -43,7 +43,6 @@ export default function Search() {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/user/search?query=${searchTerm}`
         );
-        console.log(response.data);
 
         setResults(response.data.user);
       } catch (err) {

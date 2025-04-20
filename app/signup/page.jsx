@@ -74,7 +74,6 @@ export default function SignupPage() {
       }
 
       const result = await res.json();
-      console.log("Server Response:", result);
     } catch (err) {
       console.log(err);
     } finally {

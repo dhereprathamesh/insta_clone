@@ -44,8 +44,6 @@ export default function Profile() {
 
         setProfile(profileRes.data.user);
         setPosts(postsRes.data.posts);
-        console.log("Profile:", profileRes.data);
-        console.log("Posts:", postsRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
@@ -113,8 +111,6 @@ export default function Profile() {
       // Remove the post from the state after successful deletion
       const updatedPosts = posts.filter((post) => post._id !== postId);
       setPosts(updatedPosts);
-
-      console.log("Post deleted successfully");
     } catch (err) {
       console.error("Error deleting post:", err);
     }
@@ -183,7 +179,6 @@ export default function Profile() {
         {/* Tab Content */}
         {activeTab === "posts" && (
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {console.log("postssssssss", posts)}
             {posts && posts.length > 0 ? (
               posts.map((post, index) => (
                 <ProfilePostCard

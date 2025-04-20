@@ -33,7 +33,6 @@ export default function AddPost() {
       );
       toast.success("Post added successfully!");
 
-      console.log("Post added:", response.data);
       router.push("/profile");
     } catch (error) {
       console.error("Error adding post:", error);
